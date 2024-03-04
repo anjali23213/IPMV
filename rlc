@@ -1,0 +1,35 @@
+% MATLAB program for Run Length Encoding and Decoding of Image
+clc
+clear all;
+close all;
+I = [39 39 39 39 39 126 126
+     39 39 39 39 39 126 126
+     39 39 39 39 39 126 126
+     39 39 39 39 39 126 126
+     39 39 39 39 39 126 126
+     39 39 39 39 39 126 126
+     39 39 39 39 39 126 126];
+disp('the pixel values are:');
+disp(I);
+subplot(1,2,1);
+imshow(uint8(I));
+title('Original image');
+str=reshape(I.',1,[] );
+display(str);
+str=reshape(I.',1,[] ); % Convert Image from 2D to 1D
+disp('The input string is:');
+% str=[ 5 5 5 5 5 4 4 4 4 3 3 3 2 2 ];
+disp(str);
+y=[];
+c=1;
+for i=1:length(str)-1
+    if(str(i)==str(i+1))
+        c=c+1;
+    else
+        y=[y,c,str(i),];
+    c=1;
+    end
+end
+y=[y,c,str(length(str))];
+disp('The encoded string is:');
+disp(y);
